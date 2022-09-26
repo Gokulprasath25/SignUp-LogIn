@@ -23,9 +23,9 @@ public class Index
 	  if(PW1.equals(PW2))
 	  {
 	    PW = PW1;
-          
-	      Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gokul","root","Root@25");
-		  PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Users WHERE UserName = (?)");
+          Class.forName("com.mysql.jdbc.Driver");    
+	      Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_Name","mysqlUser","mysqlPassword"); 
+		  PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Users WHERE UserName = (?)"); 
 		  pstmt.setString(1,UN);
 		  ResultSet rs = pstmt.executeQuery();
 		  if(rs.next())
@@ -60,7 +60,8 @@ public class Index
 		 System.out.println("------------------------");
 		 System.out.println("Enter Password");
 		 String PW = br.readLine();
-		 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gokul","root","Root@25");
+		 Class.forName("com.mysql.jdbc.Driver");
+		 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_Name","mysqlUser","mysqlPassword");
 		 PreparedStatement stmt = con.prepareStatement("SELECT Name FROM users WHERE UserName = (?) AND Password = (?)");
 		 stmt.setString(1,UN);
 		 stmt.setString(2, PW);
